@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jq.dao.ex.Kitten_allUserMapperEX">
+
+
+    <select id="myAuthorityList" resultType="com.jq.pojo.KittenAuthority">
+        SELECT * FROM kitten_authority
+        WHERE authority_name IN
+        <foreach item="name" collection="list" open="(" separator="," close=")">
+            #{name}
+        </foreach>
+    </select>
+    <select id="getauthorityService" resultType="com.jq.pojo.ApplyAuthority">
+        select *
+        from apply_authority
+        where 1=1
+        <if test="selectType != '' and selectType != null">
+            and status like concat('%',#{selectType},'%')
+        </if>
+        <if test="userType == 0">
+            and applicant_name=#{userName}
+        </if>
+        order by id desc
+    </select>
+    <select id="countApplyAuthority" resultType="java.lang.Integer">
+        select count(*) from apply_authority where status like concat('%','待','%')
+
+    </select>
+    <select id="getApplyMaintain" resultType="com.jq.pojo.ApplyMaintain">
+        select * from apply_maintain
+        where 1=1
+        <if test="id != '' and id != null">
+            and id like concat('%',#{id},'%')
+        </if>
+        <if test="status != '' and status != null">
+            and status like concat('%',#{status},'%')
+        </if>
+        <if test="applicant_name != '' and applicant_name != null">
+            and applicant_name like concat('%',#{applicant_name},'%')
+        </if>
+        order by id desc
+    </select>
+    <select id="getKittenPropertyList" resultType="com.jq.pojo.ApplyProperty">
+        select * from apply_property
+        where 1=1
+        <if test="status != '' and status != null">
+            and status like concat('%',#{status},'%')
+        </if>
+        order by id desc
+    </select>
+    <select id="getAddressBook" resultType="com.jq.pojo.HrEmployee">
+        select * from hr_employee
+        where emp_status='入职'
+        <if test="name != '' and name != null">
+            and name like concat('%',#{name},'%')
+        </if>
+        <if test="department != '' and department != null">
+            and department like concat('%',#{department},'%')
+        </if>
+        <if test="workNum != '' and workNum != null">
+            and workNum like concat('%',#{workNum},'%')
+        </if>
+    </select>
+
+
+</mapper>

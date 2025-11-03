@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jq.dao.ex.Kitten_hrMapperEX">
+    <update id="editHomePage">
+        update hr_homepage
+        <set>
+            <if test="newEmpJob1 != null">
+                newEmpJob1 = #{newEmpJob1},
+            </if>
+            <if test="newEmpJob2 != null">
+                newEmpJob2 = #{newEmpJob2},
+            </if>
+            <if test="newEmpJob3 != null">
+                newEmpJob3 = #{newEmpJob3},
+            </if>
+            <if test="newEmp1 != null">
+                newEmp1 = #{newEmp1},
+            </if>
+            <if test="newEmp2 != null">
+                newEmp2 = #{newEmp2},
+            </if>
+            <if test="newEmp3 != null">
+                newEmp3 = #{newEmp3},
+            </if>
+        </set>
+    </update>
+
+
+    <select id="getEmployeeInfo" resultType="com.jq.pojo.HrEmployee">
+        select * from hr_employee
+        where 1=1
+        <if test="name != '' and name != null">
+            and name like concat('%',#{name},'%')
+        </if>
+        <if test="department != '' and department != null">
+            and department like concat('%',#{department},'%')
+        </if>
+        <if test="workNum != '' and workNum != null">
+            and workNum like concat('%',#{workNum},'%')
+        </if>
+        order by id desc
+    </select>
+    <select id="getHomePage" resultType="com.jq.pojo.HrHomepage">
+        select * from hr_homepage;
+    </select>
+    <select id="getHrNewemp" resultType="com.jq.pojo.HrNewemp">
+        select * from hr_newemp order by id desc
+    </select>
+
+</mapper>

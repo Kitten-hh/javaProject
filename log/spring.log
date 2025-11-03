@@ -1,0 +1,37 @@
+2023-05-14 22:38:18.918  INFO 16460 --- [main] com.jq.Application                       : Starting Application using Java 1.8.0_20 on Kitten-LENGION with PID 16460 (D:\javaProject\lurun-api\lurun-api-controller\target\classes started by lenovo in D:\javaProject\lurun-api)
+2023-05-14 22:38:18.949  INFO 16460 --- [main] com.jq.Application                       : The following profiles are active: prod
+2023-05-14 22:38:20.410  INFO 16460 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2023-05-14 22:38:20.425  INFO 16460 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2023-05-14 22:38:20.456  INFO 16460 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 12 ms. Found 0 Redis repository interfaces.
+2023-05-14 22:38:21.083  INFO 16460 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'spring.datasource.dynamic-com.baomidou.dynamic.datasource.spring.boot.autoconfigure.DynamicDataSourceProperties' of type [com.baomidou.dynamic.datasource.spring.boot.autoconfigure.DynamicDataSourceProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-05-14 22:38:21.099  INFO 16460 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'com.baomidou.dynamic.datasource.spring.boot.autoconfigure.DynamicDataSourceAutoConfiguration' of type [com.baomidou.dynamic.datasource.spring.boot.autoconfigure.DynamicDataSourceAutoConfiguration$$EnhancerBySpringCGLIB$$7e3087e3] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-05-14 22:38:21.115  INFO 16460 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'dsProcessor' of type [com.baomidou.dynamic.datasource.processor.DsHeaderProcessor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-05-14 22:38:21.633  INFO 16460 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 9090 (http)
+2023-05-14 22:38:21.633  INFO 16460 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-05-14 22:38:21.633  INFO 16460 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.56]
+2023-05-14 22:38:21.837  INFO 16460 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/lurun]  : Initializing Spring embedded WebApplicationContext
+2023-05-14 22:38:21.837  INFO 16460 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2810 ms
+2023-05-14 22:38:22.151  INFO 16460 --- [main] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1,master} inited
+2023-05-14 22:38:22.151  INFO 16460 --- [main] c.b.d.d.DynamicRoutingDataSource         : dynamic-datasource - load a datasource named [master] success
+2023-05-14 22:38:22.151  INFO 16460 --- [main] c.b.d.d.DynamicRoutingDataSource         : dynamic-datasource initial loaded [1] datasource,primary datasource named [master]
+2023-05-14 22:38:25.098  INFO 16460 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 9090 (http) with context path '/lurun'
+2023-05-14 22:38:25.539  WARN 16460 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: , dataTypeClass: class java.lang.Void
+2023-05-14 22:38:25.539  WARN 16460 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: , dataTypeClass: class java.lang.Void
+2023-05-14 22:38:25.539  WARN 16460 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: string, dataTypeClass: class java.lang.Void
+2023-05-14 22:38:25.555  WARN 16460 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: string, dataTypeClass: class java.lang.Void
+2023-05-14 22:38:25.555  WARN 16460 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: , dataTypeClass: class java.lang.Void
+2023-05-14 22:38:25.555  WARN 16460 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: string, dataTypeClass: class java.lang.Void
+2023-05-14 22:38:25.555  WARN 16460 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: , dataTypeClass: class java.lang.Void
+2023-05-14 22:38:25.555  WARN 16460 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: , dataTypeClass: class java.lang.Void
+2023-05-14 22:38:25.571  WARN 16460 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: string, dataTypeClass: class java.lang.Void
+2023-05-14 22:38:25.571  WARN 16460 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: string, dataTypeClass: class java.lang.Void
+2023-05-14 22:38:25.571  WARN 16460 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: , dataTypeClass: class java.lang.Void
+2023-05-14 22:38:25.571  WARN 16460 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: , dataTypeClass: class java.lang.Void
+2023-05-14 22:38:25.571  WARN 16460 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: , dataTypeClass: class java.lang.Void
+2023-05-14 22:38:25.571  WARN 16460 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: string, dataTypeClass: class java.lang.Void
+2023-05-14 22:38:25.571  WARN 16460 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: string, dataTypeClass: class java.lang.Void
+2023-05-14 22:38:25.571  WARN 16460 --- [main] d.s.r.o.OperationImplicitParameterReader : Unable to interpret the implicit parameter configuration with dataType: string, dataTypeClass: class java.lang.Void
+2023-05-14 22:38:25.604  INFO 16460 --- [main] com.jq.Application                       : Started Application in 7.313 seconds (JVM running for 9.585)
+2023-05-14 22:38:34.221  INFO 16460 --- [SpringApplicationShutdownHook] c.b.d.d.DynamicRoutingDataSource         : dynamic-datasource start closing ....
+2023-05-14 22:38:34.221  INFO 16460 --- [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closed
+2023-05-14 22:38:34.221  INFO 16460 --- [SpringApplicationShutdownHook] c.b.d.d.DynamicRoutingDataSource         : dynamic-datasource all closed success,bye

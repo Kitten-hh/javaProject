@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jq.dao.ex.Kitten_userMapperEX">
+    <insert id="addMemo">
+        insert into kitten_memo set workNum=#{workNum}
+    </insert>
+    <update id="editAuthorityMember">
+        update kitten_authority set authority_people=#{member} where t_id=#{tid}
+    </update>
+    <update id="editKittenMemo">
+        update kitten_memo SET memo = #{memo} where workNum = #{workNum}
+    </update>
+    <update id="editApplyUser">
+        update apply_user SET status = #{status} where id = #{id}
+    </update>
+
+    <select id="getKittenUserList" resultType="com.jq.pojo.KittenUser">
+        select t1.user_id,t1.user_name,t1.workNum ,t2.department,t1.user_code ,t1.user_password ,t1.depRole ,t1.status
+        from kitten_user t1
+        left join hr_employee t2
+        on t1.workNum = t2.workNum  where 1=1
+        <if test="user_name != '' and user_name != null">
+            and t1.user_name like concat('%',#{user_name},'%')
+        </if>
+        <if test="workNum != '' and workNum != null">
+            and t1.workNum like concat('%',#{workNum},'%')
+        </if>
+        <if test="department != '' and department != null">
+            and t2.department like concat('%',#{department},'%')
+        </if>
+    </select>
+
+    <select id="getKittenAuthorityList" resultType="com.jq.pojo.KittenAuthority">
+        select * from kitten_authority where 1=1
+        <if test="authority_name != '' and authority_name != null">
+            and authority_name like concat('%',#{authority_name},'%')
+        </if>
+        <if test="authority_department != '' and authority_department != null">
+            and authority_department like concat('%',#{authority_department},'%')
+        </if>
+    </select>
+    <select id="getLeftUserList" resultType="java.util.Map">
+        select user_num as value,
+        concat(user_department,'/',user_name) as title from kitten_user
+    </select>
+    <select id="getFieldValueByTypeID" resultType="java.util.Map">
+        select code, value_chi
+        FROM kitten_field
+        WHERE code = #{typeId}
+    </select>
+    <select id="getHrEmployee" resultType="com.jq.pojo.HrEmployee">
+        select * from hr_employee where workNum=#{workNum}
+    </select>
+    <select id="getLoginUser" resultType="com.jq.pojo.KittenUser">
+        select * from kitten_user where workNum=#{workNum};
+    </select>
+    <select id="getKittenMemo" resultType="com.jq.pojo.KittenMemo">
+        select * from kitten_memo where workNum=#{workNum}
+    </select>
+    <select id="getApplyUser" resultType="java.util.Map">
+        select *
+        from apply_user
+        where 1=1
+        <if test="selectType != '' and selectType != null">
+            and (
+                apply_type like concat('%',#{selectType},'%')
+                or status like concat('%',#{selectType},'%')
+                )
+        </if>
+        <if test="applicant_name != '' and applicant_name != null">
+            and applicant_name=#{applicant_name}
+        </if>
+        order by id desc
+    </select>
+    <select id="countApplyUser" resultType="java.lang.Integer">
+        select count(*) from apply_user where status ='待审'
+        <if test="applicant_name != '' and applicant_name != null">
+            and applicant_name=#{applicant_name}
+        </if>
+    </select>
+    <select id="getUserinfo" resultType="java.util.Map">
+        select t1.*,t2.depRole from hr_employee t1
+        left join kitten_user t2 on t1.workNum =t2.workNum
+        where name=#{user_name}
+    </select>
+    <select id="getDepartment" resultType="java.lang.String">
+        select department from hr_employee where workNum =#{workNum}
+    </select>
+    <select id="getKittenLield" resultType="com.jq.pojo.KittenField">
+        select * from kitten_field order by f_id desc
+    </select>
+
+
+</mapper>

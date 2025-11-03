@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jq.dao.HrHomepageMapper">
+  <resultMap id="BaseResultMap" type="com.jq.pojo.HrHomepage">
+    <result column="newEmpJob1" jdbcType="VARCHAR" property="newEmpJob1" />
+    <result column="newEmpJob2" jdbcType="VARCHAR" property="newEmpJob2" />
+    <result column="newEmpJob3" jdbcType="VARCHAR" property="newEmpJob3" />
+    <result column="newEmp1" jdbcType="VARCHAR" property="newEmp1" />
+    <result column="newEmp2" jdbcType="VARCHAR" property="newEmp2" />
+    <result column="newEmp3" jdbcType="VARCHAR" property="newEmp3" />
+  </resultMap>
+  <insert id="insert" parameterType="com.jq.pojo.HrHomepage">
+    insert into hr_homepage (newEmpJob1, newEmpJob2, newEmpJob3, 
+      newEmp1, newEmp2, newEmp3
+      )
+    values (#{newEmpJob1,jdbcType=VARCHAR}, #{newEmpJob2,jdbcType=VARCHAR}, #{newEmpJob3,jdbcType=VARCHAR}, 
+      #{newEmp1,jdbcType=VARCHAR}, #{newEmp2,jdbcType=VARCHAR}, #{newEmp3,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.jq.pojo.HrHomepage">
+    insert into hr_homepage
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="newEmpJob1 != null">
+        newEmpJob1,
+      </if>
+      <if test="newEmpJob2 != null">
+        newEmpJob2,
+      </if>
+      <if test="newEmpJob3 != null">
+        newEmpJob3,
+      </if>
+      <if test="newEmp1 != null">
+        newEmp1,
+      </if>
+      <if test="newEmp2 != null">
+        newEmp2,
+      </if>
+      <if test="newEmp3 != null">
+        newEmp3,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="newEmpJob1 != null">
+        #{newEmpJob1,jdbcType=VARCHAR},
+      </if>
+      <if test="newEmpJob2 != null">
+        #{newEmpJob2,jdbcType=VARCHAR},
+      </if>
+      <if test="newEmpJob3 != null">
+        #{newEmpJob3,jdbcType=VARCHAR},
+      </if>
+      <if test="newEmp1 != null">
+        #{newEmp1,jdbcType=VARCHAR},
+      </if>
+      <if test="newEmp2 != null">
+        #{newEmp2,jdbcType=VARCHAR},
+      </if>
+      <if test="newEmp3 != null">
+        #{newEmp3,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

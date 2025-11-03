@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jq.dao.KittenAuthorityMapper">
+  <resultMap id="BaseResultMap" type="com.jq.pojo.KittenAuthority">
+    <id column="t_id" jdbcType="INTEGER" property="t_id" />
+    <result column="authority_name" jdbcType="VARCHAR" property="authority_name" />
+    <result column="authority_department" jdbcType="VARCHAR" property="authority_department" />
+    <result column="authority_description" jdbcType="VARCHAR" property="authority_description" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    t_id, authority_name, authority_department, authority_description
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from kitten_authority
+    where t_id = #{t_id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from kitten_authority
+    where t_id = #{t_id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.jq.pojo.KittenAuthority">
+    insert into kitten_authority (t_id, authority_name, authority_department, 
+      authority_description)
+    values (#{t_id,jdbcType=INTEGER}, #{authority_name,jdbcType=VARCHAR}, #{authority_department,jdbcType=VARCHAR}, 
+      #{authority_description,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.jq.pojo.KittenAuthority">
+    insert into kitten_authority
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="t_id != null">
+        t_id,
+      </if>
+      <if test="authority_name != null">
+        authority_name,
+      </if>
+      <if test="authority_department != null">
+        authority_department,
+      </if>
+      <if test="authority_description != null">
+        authority_description,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="t_id != null">
+        #{t_id,jdbcType=INTEGER},
+      </if>
+      <if test="authority_name != null">
+        #{authority_name,jdbcType=VARCHAR},
+      </if>
+      <if test="authority_department != null">
+        #{authority_department,jdbcType=VARCHAR},
+      </if>
+      <if test="authority_description != null">
+        #{authority_description,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jq.pojo.KittenAuthority">
+    update kitten_authority
+    <set>
+      <if test="authority_name != null">
+        authority_name = #{authority_name,jdbcType=VARCHAR},
+      </if>
+      <if test="authority_department != null">
+        authority_department = #{authority_department,jdbcType=VARCHAR},
+      </if>
+      <if test="authority_description != null">
+        authority_description = #{authority_description,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where t_id = #{t_id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.jq.pojo.KittenAuthority">
+    update kitten_authority
+    set authority_name = #{authority_name,jdbcType=VARCHAR},
+      authority_department = #{authority_department,jdbcType=VARCHAR},
+      authority_description = #{authority_description,jdbcType=VARCHAR}
+    where t_id = #{t_id,jdbcType=INTEGER}
+  </update>
+</mapper>

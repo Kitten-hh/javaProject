@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration PUBLIC
+        "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+
+    <!-- 指定数据连接驱动jar地址 -->
+<!--    <classPathEntry location="D:\repository\com\microsoft\sqlserver\sqljdbc4\4.0\sqljdbc4-4.0.jar"/>-->
+    <classPathEntry location= "D:\repository\mysql\mysql-connector-java\8.0.28\mysql-connector-java-8.0.28.jar"/>
+    <!-- 一个数据库一个context -->
+    <context id="MyBatis">
+
+        <!--覆盖生成XML文件-->
+        <plugin type="org.mybatis.generator.plugins.UnmergeableXmlMappersPlugin" />
+
+        <!-- 不生成注释 -->
+        <commentGenerator>
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+
+        <!-- jdbc连接 -->
+<!--        <jdbcConnection connectionURL="jdbc:sqlserver://192.168.2.40:1433;DatabaseName=Temp20230210"-->
+<!--                        driverClass="com.microsoft.sqlserver.jdbc.SQLServerDriver"-->
+<!--                        userId="sa"-->
+<!--                        password="&amp;*(erpadmin&amp;*(">-->
+<!--            &lt;!&ndash;高版本MySQL驱动需要声明&ndash;&gt;-->
+<!--            <property name="useInformationSchema" value="true"/>-->
+<!--        </jdbcConnection>-->
+        <jdbcConnection connectionURL="jdbc:mysql://localhost:3306/company?serverTimezone=GMT%2B8"
+                        driverClass="com.mysql.cj.jdbc.Driver"
+                        userId="root"
+                        password="1234">
+            <!--高版本MySQL驱动需要声明-->
+            <property name="useInformationSchema" value="true"/>
+        </jdbcConnection>
+
+        <!-- 类型转换 -->
+        <javaTypeResolver>
+            <!-- 是否使用bigDecimal， false可自动转化以下类型（Long, Integer, Short, etc.） -->
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+        <!-- 生成实体类地址 -->
+        <javaModelGenerator targetPackage="com.jq.pojo"
+                            targetProject="D:\javaProject\lurun-api\lurun-api-bean\src\main\java">
+            <!--如果true，MBG会根据catalog和schema来生成子包。如果false就会直接用targetPackage属性。-->
+            <property name="enableSubPackages" value="false"/>
+            <!-- 是否针对string类型的字段在set的时候进行trim调用 -->
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+
+        <!-- 生成mapper.xml文件 -->
+        <sqlMapGenerator targetPackage="sqlmap"
+                         targetProject="D:\javaProject\lurun-api\lurun-api-dao\src\main\resources\">
+            <property name="enableSubPackages" value="false"/>
+        </sqlMapGenerator>
+
+        <!-- 生成mapper.xml对应的接口dao -->
+        <javaClientGenerator targetPackage="com.jq.dao"
+                             targetProject="D:\javaProject\lurun-api\lurun-api-dao\src\main\java" type="XMLMAPPER">
+            <property name="enableSubPackages" value="false"/>
+        </javaClientGenerator>
+
+        <!--
+            配置表信息
+            tableName 表名
+            domainObjectName 类名
+            不生成Example类：
+            enableCountByExample="false"
+            enableDeleteByExample="false"
+            enableSelectByExample="false"
+            enableUpdateByExample="false"
+        -->
+
+        <table tableName="kitten_authority"
+               enableCountByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               enableUpdateByExample="false" >
+
+            <!--默认FALSE，表示针对列名的下划线转换为驼峰写法。TRUE，表示原样输出数据库列名-->
+            <property name="useActualColumnNames" value="true"/>
+        </table>
+    </context>
+</generatorConfiguration>

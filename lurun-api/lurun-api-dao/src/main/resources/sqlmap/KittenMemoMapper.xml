@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jq.dao.KittenMemoMapper">
+  <resultMap id="BaseResultMap" type="com.jq.pojo.KittenMemo">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="workNum" jdbcType="VARCHAR" property="workNum" />
+    <result column="updateTime" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.jq.pojo.KittenMemo">
+    <result column="memo" jdbcType="LONGVARCHAR" property="memo" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, workNum, updateTime
+  </sql>
+  <sql id="Blob_Column_List">
+    memo
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from kitten_memo
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from kitten_memo
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.jq.pojo.KittenMemo">
+    insert into kitten_memo (id, workNum, updateTime, 
+      memo)
+    values (#{id,jdbcType=INTEGER}, #{workNum,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{memo,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.jq.pojo.KittenMemo">
+    insert into kitten_memo
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="workNum != null">
+        workNum,
+      </if>
+      <if test="updateTime != null">
+        updateTime,
+      </if>
+      <if test="memo != null">
+        memo,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="workNum != null">
+        #{workNum,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="memo != null">
+        #{memo,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jq.pojo.KittenMemo">
+    update kitten_memo
+    <set>
+      <if test="workNum != null">
+        workNum = #{workNum,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        updateTime = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="memo != null">
+        memo = #{memo,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.jq.pojo.KittenMemo">
+    update kitten_memo
+    set workNum = #{workNum,jdbcType=VARCHAR},
+      updateTime = #{updateTime,jdbcType=TIMESTAMP},
+      memo = #{memo,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.jq.pojo.KittenMemo">
+    update kitten_memo
+    set workNum = #{workNum,jdbcType=VARCHAR},
+      updateTime = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

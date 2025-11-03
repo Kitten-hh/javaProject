@@ -1,0 +1,2 @@
+${AnsiColor.BRIGHT_CYAN}© JQ版权所有 Spring Boot 版本：${spring-boot.version}
+${AnsiColor.DEFAULT}

@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jq.dao.ApplyAuthorityMapper">
+  <resultMap id="BaseResultMap" type="com.jq.pojo.ApplyAuthority">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="applicant_name" jdbcType="VARCHAR" property="applicant_name" />
+    <result column="apply_date" jdbcType="DATE" property="apply_date" />
+    <result column="user_name" jdbcType="VARCHAR" property="user_name" />
+    <result column="workNum" jdbcType="VARCHAR" property="workNum" />
+    <result column="authority_name" jdbcType="VARCHAR" property="authority_name" />
+    <result column="apply_type" jdbcType="VARCHAR" property="apply_type" />
+    <result column="status" jdbcType="VARCHAR" property="status" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.jq.pojo.ApplyAuthority">
+    <result column="apply_reason" jdbcType="LONGVARCHAR" property="apply_reason" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, applicant_name, apply_date, user_name, workNum, authority_name, apply_type, status
+  </sql>
+  <sql id="Blob_Column_List">
+    apply_reason
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from apply_authority
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from apply_authority
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.jq.pojo.ApplyAuthority">
+    insert into apply_authority (id, applicant_name, apply_date, 
+      user_name, workNum, authority_name, 
+      apply_type, status, apply_reason
+      )
+    values (#{id,jdbcType=INTEGER}, #{applicant_name,jdbcType=VARCHAR}, #{apply_date,jdbcType=DATE}, 
+      #{user_name,jdbcType=VARCHAR}, #{workNum,jdbcType=VARCHAR}, #{authority_name,jdbcType=VARCHAR}, 
+      #{apply_type,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, #{apply_reason,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.jq.pojo.ApplyAuthority">
+    insert into apply_authority
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="applicant_name != null">
+        applicant_name,
+      </if>
+      <if test="apply_date != null">
+        apply_date,
+      </if>
+      <if test="user_name != null">
+        user_name,
+      </if>
+      <if test="workNum != null">
+        workNum,
+      </if>
+      <if test="authority_name != null">
+        authority_name,
+      </if>
+      <if test="apply_type != null">
+        apply_type,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="apply_reason != null">
+        apply_reason,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="applicant_name != null">
+        #{applicant_name,jdbcType=VARCHAR},
+      </if>
+      <if test="apply_date != null">
+        #{apply_date,jdbcType=DATE},
+      </if>
+      <if test="user_name != null">
+        #{user_name,jdbcType=VARCHAR},
+      </if>
+      <if test="workNum != null">
+        #{workNum,jdbcType=VARCHAR},
+      </if>
+      <if test="authority_name != null">
+        #{authority_name,jdbcType=VARCHAR},
+      </if>
+      <if test="apply_type != null">
+        #{apply_type,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="apply_reason != null">
+        #{apply_reason,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jq.pojo.ApplyAuthority">
+    update apply_authority
+    <set>
+      <if test="applicant_name != null">
+        applicant_name = #{applicant_name,jdbcType=VARCHAR},
+      </if>
+      <if test="apply_date != null">
+        apply_date = #{apply_date,jdbcType=DATE},
+      </if>
+      <if test="user_name != null">
+        user_name = #{user_name,jdbcType=VARCHAR},
+      </if>
+      <if test="workNum != null">
+        workNum = #{workNum,jdbcType=VARCHAR},
+      </if>
+      <if test="authority_name != null">
+        authority_name = #{authority_name,jdbcType=VARCHAR},
+      </if>
+      <if test="apply_type != null">
+        apply_type = #{apply_type,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="apply_reason != null">
+        apply_reason = #{apply_reason,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.jq.pojo.ApplyAuthority">
+    update apply_authority
+    set applicant_name = #{applicant_name,jdbcType=VARCHAR},
+      apply_date = #{apply_date,jdbcType=DATE},
+      user_name = #{user_name,jdbcType=VARCHAR},
+      workNum = #{workNum,jdbcType=VARCHAR},
+      authority_name = #{authority_name,jdbcType=VARCHAR},
+      apply_type = #{apply_type,jdbcType=VARCHAR},
+      status = #{status,jdbcType=VARCHAR},
+      apply_reason = #{apply_reason,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.jq.pojo.ApplyAuthority">
+    update apply_authority
+    set applicant_name = #{applicant_name,jdbcType=VARCHAR},
+      apply_date = #{apply_date,jdbcType=DATE},
+      user_name = #{user_name,jdbcType=VARCHAR},
+      workNum = #{workNum,jdbcType=VARCHAR},
+      authority_name = #{authority_name,jdbcType=VARCHAR},
+      apply_type = #{apply_type,jdbcType=VARCHAR},
+      status = #{status,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

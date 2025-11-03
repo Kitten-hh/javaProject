@@ -1,0 +1,30 @@
+server:
+  port: 9090
+  servlet:
+    context-path: /lurun
+
+mybatis:
+  mapper-locations: classpath:sqlmap/*.xml,classpath:sqlmap/ex/*.xml
+  type-aliases-package: com.jq.pojo
+logging:
+  level:
+    com.jq.dao: debug
+  file:
+    path: ../log
+
+#运行环境（dev开发、prod生产）
+spring:
+  profiles:
+    active: @profileActive@
+  jackson:
+    time-zone: Asia/Shanghai
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 100MB
+  application:
+    name: lurun-api
+
+  mvc:
+    pathmatch:
+      matching-strategy: ANT_PATH_MATCHER

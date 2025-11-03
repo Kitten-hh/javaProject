@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jq.dao.ApplyPropertyMapper">
+  <resultMap id="BaseResultMap" type="com.jq.pojo.ApplyProperty">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="applicant_name" jdbcType="VARCHAR" property="applicant_name" />
+    <result column="apply_date" jdbcType="DATE" property="apply_date" />
+    <result column="user_phone" jdbcType="VARCHAR" property="user_phone" />
+    <result column="property_type" jdbcType="VARCHAR" property="property_type" />
+    <result column="area" jdbcType="VARCHAR" property="area" />
+    <result column="area_detailed" jdbcType="VARCHAR" property="area_detailed" />
+    <result column="property_description" jdbcType="VARCHAR" property="property_description" />
+    <result column="leader" jdbcType="VARCHAR" property="leader" />
+    <result column="status" jdbcType="VARCHAR" property="status" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, applicant_name, apply_date, user_phone, property_type, area, area_detailed, property_description, 
+    leader, status
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from apply_property
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from apply_property
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.jq.pojo.ApplyProperty">
+    insert into apply_property (id, applicant_name, apply_date, 
+      user_phone, property_type, area, 
+      area_detailed, property_description, leader, 
+      status)
+    values (#{id,jdbcType=INTEGER}, #{applicant_name,jdbcType=VARCHAR}, #{apply_date,jdbcType=DATE}, 
+      #{user_phone,jdbcType=VARCHAR}, #{property_type,jdbcType=VARCHAR}, #{area,jdbcType=VARCHAR}, 
+      #{area_detailed,jdbcType=VARCHAR}, #{property_description,jdbcType=VARCHAR}, #{leader,jdbcType=VARCHAR}, 
+      #{status,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.jq.pojo.ApplyProperty">
+    insert into apply_property
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="applicant_name != null">
+        applicant_name,
+      </if>
+      <if test="apply_date != null">
+        apply_date,
+      </if>
+      <if test="user_phone != null">
+        user_phone,
+      </if>
+      <if test="property_type != null">
+        property_type,
+      </if>
+      <if test="area != null">
+        area,
+      </if>
+      <if test="area_detailed != null">
+        area_detailed,
+      </if>
+      <if test="property_description != null">
+        property_description,
+      </if>
+      <if test="leader != null">
+        leader,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="applicant_name != null">
+        #{applicant_name,jdbcType=VARCHAR},
+      </if>
+      <if test="apply_date != null">
+        #{apply_date,jdbcType=DATE},
+      </if>
+      <if test="user_phone != null">
+        #{user_phone,jdbcType=VARCHAR},
+      </if>
+      <if test="property_type != null">
+        #{property_type,jdbcType=VARCHAR},
+      </if>
+      <if test="area != null">
+        #{area,jdbcType=VARCHAR},
+      </if>
+      <if test="area_detailed != null">
+        #{area_detailed,jdbcType=VARCHAR},
+      </if>
+      <if test="property_description != null">
+        #{property_description,jdbcType=VARCHAR},
+      </if>
+      <if test="leader != null">
+        #{leader,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jq.pojo.ApplyProperty">
+    update apply_property
+    <set>
+      <if test="applicant_name != null">
+        applicant_name = #{applicant_name,jdbcType=VARCHAR},
+      </if>
+      <if test="apply_date != null">
+        apply_date = #{apply_date,jdbcType=DATE},
+      </if>
+      <if test="user_phone != null">
+        user_phone = #{user_phone,jdbcType=VARCHAR},
+      </if>
+      <if test="property_type != null">
+        property_type = #{property_type,jdbcType=VARCHAR},
+      </if>
+      <if test="area != null">
+        area = #{area,jdbcType=VARCHAR},
+      </if>
+      <if test="area_detailed != null">
+        area_detailed = #{area_detailed,jdbcType=VARCHAR},
+      </if>
+      <if test="property_description != null">
+        property_description = #{property_description,jdbcType=VARCHAR},
+      </if>
+      <if test="leader != null">
+        leader = #{leader,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.jq.pojo.ApplyProperty">
+    update apply_property
+    set applicant_name = #{applicant_name,jdbcType=VARCHAR},
+      apply_date = #{apply_date,jdbcType=DATE},
+      user_phone = #{user_phone,jdbcType=VARCHAR},
+      property_type = #{property_type,jdbcType=VARCHAR},
+      area = #{area,jdbcType=VARCHAR},
+      area_detailed = #{area_detailed,jdbcType=VARCHAR},
+      property_description = #{property_description,jdbcType=VARCHAR},
+      leader = #{leader,jdbcType=VARCHAR},
+      status = #{status,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

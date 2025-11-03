@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jq.dao.HrEmployeeMapper">
+  <resultMap id="BaseResultMap" type="com.jq.pojo.HrEmployee">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="registrant_name" jdbcType="VARCHAR" property="registrant_name" />
+    <result column="registrant_date" jdbcType="DATE" property="registrant_date" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="sex" jdbcType="VARCHAR" property="sex" />
+    <result column="entryDate" jdbcType="DATE" property="entryDate" />
+    <result column="workNum" jdbcType="VARCHAR" property="workNum" />
+    <result column="department" jdbcType="VARCHAR" property="department" />
+    <result column="job" jdbcType="VARCHAR" property="job" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="location" jdbcType="VARCHAR" property="location" />
+    <result column="emp_status" jdbcType="VARCHAR" property="emp_status" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, registrant_name, registrant_date, name, sex, entryDate, workNum, department, 
+    job, phone, email, location, emp_status
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from hr_employee
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from hr_employee
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.jq.pojo.HrEmployee">
+    insert into hr_employee (id, registrant_name, registrant_date, 
+      name, sex, entryDate, 
+      workNum, department, job, 
+      phone, email, location, 
+      emp_status)
+    values (#{id,jdbcType=INTEGER}, #{registrant_name,jdbcType=VARCHAR}, #{registrant_date,jdbcType=DATE}, 
+      #{name,jdbcType=VARCHAR}, #{sex,jdbcType=VARCHAR}, #{entryDate,jdbcType=DATE}, 
+      #{workNum,jdbcType=VARCHAR}, #{department,jdbcType=VARCHAR}, #{job,jdbcType=VARCHAR}, 
+      #{phone,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{location,jdbcType=VARCHAR}, 
+      #{emp_status,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.jq.pojo.HrEmployee">
+    insert into hr_employee
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="registrant_name != null">
+        registrant_name,
+      </if>
+      <if test="registrant_date != null">
+        registrant_date,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="sex != null">
+        sex,
+      </if>
+      <if test="entryDate != null">
+        entryDate,
+      </if>
+      <if test="workNum != null">
+        workNum,
+      </if>
+      <if test="department != null">
+        department,
+      </if>
+      <if test="job != null">
+        job,
+      </if>
+      <if test="phone != null">
+        phone,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="location != null">
+        location,
+      </if>
+      <if test="emp_status != null">
+        emp_status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="registrant_name != null">
+        #{registrant_name,jdbcType=VARCHAR},
+      </if>
+      <if test="registrant_date != null">
+        #{registrant_date,jdbcType=DATE},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="entryDate != null">
+        #{entryDate,jdbcType=DATE},
+      </if>
+      <if test="workNum != null">
+        #{workNum,jdbcType=VARCHAR},
+      </if>
+      <if test="department != null">
+        #{department,jdbcType=VARCHAR},
+      </if>
+      <if test="job != null">
+        #{job,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="location != null">
+        #{location,jdbcType=VARCHAR},
+      </if>
+      <if test="emp_status != null">
+        #{emp_status,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jq.pojo.HrEmployee">
+    update hr_employee
+    <set>
+      <if test="registrant_name != null">
+        registrant_name = #{registrant_name,jdbcType=VARCHAR},
+      </if>
+      <if test="registrant_date != null">
+        registrant_date = #{registrant_date,jdbcType=DATE},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        sex = #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="entryDate != null">
+        entryDate = #{entryDate,jdbcType=DATE},
+      </if>
+      <if test="workNum != null">
+        workNum = #{workNum,jdbcType=VARCHAR},
+      </if>
+      <if test="department != null">
+        department = #{department,jdbcType=VARCHAR},
+      </if>
+      <if test="job != null">
+        job = #{job,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="location != null">
+        location = #{location,jdbcType=VARCHAR},
+      </if>
+      <if test="emp_status != null">
+        emp_status = #{emp_status,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.jq.pojo.HrEmployee">
+    update hr_employee
+    set registrant_name = #{registrant_name,jdbcType=VARCHAR},
+      registrant_date = #{registrant_date,jdbcType=DATE},
+      name = #{name,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=VARCHAR},
+      entryDate = #{entryDate,jdbcType=DATE},
+      workNum = #{workNum,jdbcType=VARCHAR},
+      department = #{department,jdbcType=VARCHAR},
+      job = #{job,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      location = #{location,jdbcType=VARCHAR},
+      emp_status = #{emp_status,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

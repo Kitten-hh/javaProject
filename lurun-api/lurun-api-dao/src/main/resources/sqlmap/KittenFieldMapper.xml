@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jq.dao.KittenFieldMapper">
+  <resultMap id="BaseResultMap" type="com.jq.pojo.KittenField">
+    <id column="f_id" jdbcType="INTEGER" property="f_id" />
+    <result column="code" jdbcType="VARCHAR" property="code" />
+    <result column="value_chi" jdbcType="VARCHAR" property="value_chi" />
+    <result column="value_eng" jdbcType="VARCHAR" property="value_eng" />
+    <result column="sequence" jdbcType="VARCHAR" property="sequence" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    f_id, code, value_chi, value_eng, sequence
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from kitten_field
+    where f_id = #{f_id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from kitten_field
+    where f_id = #{f_id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.jq.pojo.KittenField">
+    insert into kitten_field (f_id, code, value_chi, 
+      value_eng, sequence)
+    values (#{f_id,jdbcType=INTEGER}, #{code,jdbcType=VARCHAR}, #{value_chi,jdbcType=VARCHAR}, 
+      #{value_eng,jdbcType=VARCHAR}, #{sequence,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.jq.pojo.KittenField">
+    insert into kitten_field
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="f_id != null">
+        f_id,
+      </if>
+      <if test="code != null">
+        code,
+      </if>
+      <if test="value_chi != null">
+        value_chi,
+      </if>
+      <if test="value_eng != null">
+        value_eng,
+      </if>
+      <if test="sequence != null">
+        sequence,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="f_id != null">
+        #{f_id,jdbcType=INTEGER},
+      </if>
+      <if test="code != null">
+        #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="value_chi != null">
+        #{value_chi,jdbcType=VARCHAR},
+      </if>
+      <if test="value_eng != null">
+        #{value_eng,jdbcType=VARCHAR},
+      </if>
+      <if test="sequence != null">
+        #{sequence,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jq.pojo.KittenField">
+    update kitten_field
+    <set>
+      <if test="code != null">
+        code = #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="value_chi != null">
+        value_chi = #{value_chi,jdbcType=VARCHAR},
+      </if>
+      <if test="value_eng != null">
+        value_eng = #{value_eng,jdbcType=VARCHAR},
+      </if>
+      <if test="sequence != null">
+        sequence = #{sequence,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where f_id = #{f_id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.jq.pojo.KittenField">
+    update kitten_field
+    set code = #{code,jdbcType=VARCHAR},
+      value_chi = #{value_chi,jdbcType=VARCHAR},
+      value_eng = #{value_eng,jdbcType=VARCHAR},
+      sequence = #{sequence,jdbcType=VARCHAR}
+    where f_id = #{f_id,jdbcType=INTEGER}
+  </update>
+</mapper>
